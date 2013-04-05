@@ -13,6 +13,8 @@ end
 post '/add_user' do
   password = BCRYPT::Password.create(params[:password])
   user = User.create(name: params[:name], email: params[:email], password: password)
+  user.decks << Deck.find([0,1]) #give user some starter decks.
+
   login! user
   erb: decks
 end
@@ -30,5 +32,6 @@ end
 
 post '/logout' do
   logout!
+  @message = "Thanks for playing, #{current_user.name}."
   erb :index
 end
