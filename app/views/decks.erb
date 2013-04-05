@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Welcome <%= current_user.name %>!</h1>
+  <h3>Please select a deck</h3>
+</div>
+
+<% current_user.decks.each do |deck| %>
+  <div class="container">
+  <a href="/decks"><%=deck.name%></a>
+  </div>
+<% end %>
