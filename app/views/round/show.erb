@@ -1,0 +1,13 @@
+<div class="container">
+  <div>
+    <%= @card.question%>
+  </div>
+  
+  <div>
+    <form method="post">
+      <input type="text" placeholder="Your answer please" name="card[id]" value="">
+      <input type="text" placeholder="Your answer please" name="card[answer]">
+      <button type="submit">Guess!</button>
+    </form>
+  </div>
+</div>

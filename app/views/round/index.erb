@@ -1,0 +1,7 @@
+<div class="container">
+  <ul>
+  <%@rounds.each do |round|%>
+    <li>Game # <%=round.id%> <a href="/round/<%=round.id%>">begin!</a></li>
+  <%end%>
+  </ul>
+</div>
