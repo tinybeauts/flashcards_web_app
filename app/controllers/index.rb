@@ -15,7 +15,7 @@ post '/add_user' do
   user = User.create(name: params[:name], email: params[:email], password: password)
   user.decks << Deck.find([0,1]) #give user some starter decks.
 
-  login! user
+  login! user #this method (and others) in login_helper.rb
   erb: decks
 end
 

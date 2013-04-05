@@ -1,9 +1,10 @@
 <div class="container">
   <h2>Register</h2>
+  <%= "<h4>'@message'</h4>" if @message %>
   <form method="post" action="/login">
-  Name<input type="name" name="name"><br>
-  Email<input type="text" name="email"><br>
-  Password<input type="password" name="password"><br>
-  <input type="submit" value="submit" name="submit">
+  Name<input type="name" name="name" placeholder="Abe Lincoln"><br>
+  Email<input type="text" name="email" placeholder="abe@myspace.com"><br>
+  Password<input type="password" name="password" placeholder="*******"><br>
+  <input type="submit" value="Register" name="submit">
   </form>
 </div>
