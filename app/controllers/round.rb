@@ -5,7 +5,7 @@ end
 get "/round/:id/guess" do
   @message = params[:message]
 
-  @guess = Round.find(params[:id]).guesses.sample
+  @guess = Round.find(params[:id]).guesses.remaining.sample
   hold_guess(@guess)
   @card = @guess.card
   erb :"round/show"
