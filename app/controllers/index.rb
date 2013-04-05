@@ -3,7 +3,7 @@ require 'bcrypt'
 enable :sessions
 
 get '/' do
-  sessions[:current_user_id] ? erb :decks : erb :index
+  erb :index
 end
 
 get '/register' do
