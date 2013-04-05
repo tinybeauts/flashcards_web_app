@@ -16,17 +16,17 @@ post '/add_user' do
   user.decks << Deck.find([0,1]) #give user some starter decks.
 
   login! user #this method (and others) in login_helper.rb
-  erb: decks
+  erb :decks
 end
 
 post '/login' do
   user = User.find_by_email(params[:email])
   if user.password == params[:password]
     login! user
-    erb: decks
+    erb :decks
   else
     @message = "Login failed"
-    erb: index
+    erb :index
   end
 end
 
