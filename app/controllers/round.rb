@@ -10,11 +10,15 @@ end
 
 get "/round/:id/guess" do
   @errors = session[:errors]
-
-  @guess = Round.find(params[:id]).guesses.remaining.sample
-  hold_guess(@guess)
-  @card = @guess.card
-  erb :"round/show"
+  round = Round.find(params[:id]).guesses.remaining
+  unless round.empty?
+    @guess = round.sample
+    hold_guess(@guess)
+    @card = @guess.card
+    erb :"round/show"
+  else
+    redirect to("/decks")
+  end
 end
 
 post "/round/:id/guess" do

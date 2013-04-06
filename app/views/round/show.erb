@@ -5,7 +5,7 @@
   
   <div>
     <form method="post">
-      <input type="text" name="guess_id" value="<%=@guess.id%>">
+      <input type="hidden" name="guess_id" value="<%=@guess.id%>">
       <input type="text" placeholder="Your answer please" name="attempt">
       <button type="submit">Guess!</button>
     </form>
