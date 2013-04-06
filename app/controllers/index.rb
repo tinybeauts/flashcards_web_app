@@ -3,11 +3,11 @@ require 'bcrypt'
 enable :sessions
 
 get '/' do
-  erb :index
-end
-
-get '/register' do
-  erb :register
+  if logged_in?
+    erb :decks
+  else
+    erb :index
+  end
 end
 
 post '/add_user' do
@@ -16,6 +16,11 @@ post '/add_user' do
   # user.decks << Deck.find([0,1]) #give user some starter decks.
 
   login! user #this method (and others) in login_helper.rb
+  redirect '/decks'
+end
+
+get '/decks' do
+  logged_in_redirect
   erb :decks
 end
 
@@ -25,13 +30,18 @@ post '/login' do
     login! user
     redirect '/decks'
   else
-    @message = "Login failed"
+    @message = "Login failed, please try again."
     erb :index
   end
 end
 
 get '/logout' do
+  logged_in_redirect
   @message = "Thanks for playing, #{current_user.name}."
   logout!
   erb :index
+end
+
+get '/register' do
+  erb :register
 end
