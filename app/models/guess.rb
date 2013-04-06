@@ -13,6 +13,8 @@ class Guess < ActiveRecord::Base
   def successful_attempt
     if @attempt != self.card.answer
       errors.add(:attempt, "was not the answer")
+    else
+      self.correct = true
     end
   end
 
