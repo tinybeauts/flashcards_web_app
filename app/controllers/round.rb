@@ -1,9 +1,15 @@
-get "/rounds" do
-  @rounds = current_user.rounds.all
+# get "/rounds" do
+#   @rounds = current_user.rounds.all
+# end
+
+post "/rounds/new" do
+  deck = Deck.find(params[:deck_id])
+  round = current_user.rounds.create(:choosen_deck => deck)
+  redirect to("/round/#{round.id}/guess") 
 end
 
 get "/round/:id/guess" do
-  @message = params[:message]
+  @errors = session[:errors]
 
   @guess = Round.find(params[:id]).guesses.remaining.sample
   hold_guess(@guess)
@@ -12,10 +18,11 @@ get "/round/:id/guess" do
 end
 
 post "/round/:id/guess" do
+  round_id = params[:id]
   @guess = current_guess
   @guess.attempt!(params[:attempt])
   session[:errors] = @guess.errors unless @guess.valid?
-  redirect to(url)
+  redirect to("/round/#{round_id}/guess")
 end
 
 helpers do
