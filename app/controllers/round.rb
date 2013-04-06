@@ -4,7 +4,13 @@
 
 post "/rounds/new" do
   deck = Deck.find(params[:deck_id])
-  round = current_user.rounds.create(:choosen_deck => deck)
+  # round = current_user.rounds.create(:choosen_deck => deck)
+  round = current_user.rounds.create()
+  
+  deck.cards.each do |c|
+    round.cards<<c
+  end
+  
   redirect to("/round/#{round.id}/guess") 
 end
 
