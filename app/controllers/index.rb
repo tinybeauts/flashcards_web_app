@@ -14,9 +14,13 @@ post '/add_user' do
   password = BCrypt::Password.create(params[:password])
   user = User.create(name: params[:name], email: params[:email], password: params[:password])
   # user.decks << Deck.find([0,1]) #give user some starter decks.
-
-  login! user #this method (and others) in login_helper.rb
-  redirect '/decks'
+  if user.valid?
+    login! user #this method (and others) in login_helper.rb
+    redirect '/decks'
+  else
+    @message = "Sign up failed: please try again."
+    erb '/'
+  end
 end
 
 get '/decks' do

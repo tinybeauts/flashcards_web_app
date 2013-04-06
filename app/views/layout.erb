@@ -18,6 +18,18 @@
   <title></title>
 </head>
 <body>
+    <nav>
+    <ul>
+      <% if session[:current_user_id] %> 
+        <li><a href='/'>My Decks</a></li>
+        <li><a href='/decks/new'>New Deck</a></li>
+        <li><a href='/logout'>Logout</a></li>
+      <% else %>
+        <li><a href='/'>Home</a></li>
+        <li><a href='/register'>Sign Up</a></li>
+      <% end %>
+    </ul>
+  </nav>
   <%= yield %>
 </body>
 </html>

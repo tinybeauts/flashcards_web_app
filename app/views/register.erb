@@ -1,10 +1,10 @@
 <div class="container">
   <h2>Register</h2>
   <%= "<h4>'@message'</h4>" if @message %>
-  <form method="post" action="/add_user">
-  Name<input type="name" name="name" placeholder="Abe Lincoln"><br>
-  Email<input type="text" name="email" placeholder="abe@myspace.com"><br>
-  Password<input type="password" name="password" placeholder="*******"><br>
+  <form id="login" method="post" action="/add_user">
+  Name <input type="name" name="name" placeholder="Abe Lincoln"><br><br>
+  Email <input type="text" name="email" placeholder="abe@myspace.com"><br><br>
+  Password <input type="password" name="password" placeholder="*******"><br><br>
   <input type="submit" value="Register" name="submit">
   </form>
 </div>
