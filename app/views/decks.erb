@@ -5,8 +5,8 @@
 
 <% current_user.decks.each do |deck| %>
   <div class="container">
-  <h2><a href="/decks"><%=deck.name%></a></h2>
+  <h2><a href="/deck/<%=deck.id%>"><%=deck.name%></a></h2>
   </div>
 <% end %>
 
-<center><%= <a href="/logout">Log out</a>%></center>
+<a href="/logout">Log out</a>

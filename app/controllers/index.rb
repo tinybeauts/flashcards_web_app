@@ -11,9 +11,9 @@ get '/register' do
 end
 
 post '/add_user' do
-  password = BCRYPT::Password.create(params[:password])
-  user = User.create(name: params[:name], email: params[:email], password: password)
-  user.decks << Deck.find([0,1]) #give user some starter decks.
+  password = BCrypt::Password.create(params[:password])
+  user = User.create(name: params[:name], email: params[:email], password: params[:password])
+  # user.decks << Deck.find([0,1]) #give user some starter decks.
 
   login! user #this method (and others) in login_helper.rb
   erb :decks
@@ -30,8 +30,8 @@ post '/login' do
   end
 end
 
-post '/logout' do
-  logout!
+get '/logout' do
   @message = "Thanks for playing, #{current_user.name}."
+  logout!
   erb :index
 end
