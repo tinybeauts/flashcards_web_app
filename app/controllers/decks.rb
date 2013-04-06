@@ -3,7 +3,7 @@ get '/decks/new' do
 end
 
 post '/decks/new' do
-  @deck = Deck.create(params[:deck][:name])
+  @deck = Deck.create(:name => params[:deck][:name])
   @cards = params[:deck][:cards].split("\n")
   
   @cards = @cards.map do |card|
@@ -12,6 +12,8 @@ post '/decks/new' do
                                :answer   => q_a[1])
   end
 
-  
+  current_user.decks << @deck
+
+  erb :decks
 
 end
