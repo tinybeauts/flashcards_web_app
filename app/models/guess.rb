@@ -7,11 +7,11 @@ class Guess < ActiveRecord::Base
 
   def attempt!(answer)
     @attempt = answer
-    save
+    self.save
   end
 
   def successful_attempt
-    if @answer == self.card.answer
+    if @attempt != self.card.answer
       errors.add(:attempt, "was not the answer")
     end
   end
