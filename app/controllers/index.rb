@@ -26,11 +26,11 @@ end
 
 post '/login' do
   user = User.find_by_email(params[:email])
-  if user.password == params[:password]
+  if user && user.password == params[:password]
     login! user
     redirect '/decks'
   else
-    @message = "Login failed, please try again."
+    @message = "Invalid login."
     erb :index
   end
 end
@@ -44,4 +44,8 @@ end
 
 get '/register' do
   erb :register
+end
+
+get '/:anything' do
+  erb :error
 end
