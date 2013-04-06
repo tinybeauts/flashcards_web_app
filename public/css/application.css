@@ -20,13 +20,13 @@ nav {
   background-color: grey;
 }
 nav a {
-  color: red;
+  color: navy;
   padding: 10px;
 
 }
 nav a:hover {
-  color:red;
-  background-color:slategrey;
+  color: white;
+  background-color:darkgrey;
 }
 nav ul {
     list-style-type: none;
