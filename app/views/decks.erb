@@ -5,7 +5,11 @@
 
 <% current_user.decks.each do |deck| %>
   <div class="container">
-  <h2><a href="/deck/<%=deck.id%>"><%=deck.name%></a></h2>
+  <h2>
+    <form action="/rounds/new?deck_id=<%=deck.id%>" method="post">
+      <!-- <a href="/rounds/new?deck=<%=deck.id%>"></a></h2> -->
+      <button type="submit"><%=deck.name%></button>
+    </form>
   </div>
 <% end %>
 
