@@ -23,6 +23,7 @@ get "/round/:id/guess" do
     @card = @guess.card
     erb :"round/show"
   else
+    final_score(params[:id])
     redirect to("/decks")
   end
 end
@@ -31,6 +32,7 @@ post "/round/:id/guess" do
   round_id = params[:id]
   @guess = current_guess
   @guess.attempt!(params[:attempt])
+  increment_guess_total(@guess)
   session[:errors] = @guess.errors unless @guess.valid?
   redirect to("/round/#{round_id}/guess")
 end
